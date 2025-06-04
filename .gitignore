@@ -1,0 +1,29 @@
+# Ignore macOS system files
+.DS_Store
+
+# Node dependencies
+/frontend/node_modules/
+
+/frontend/build/
+/frontend/.env
+
+# Python virtual environment
+/backend/venv/
+
+# Python cache
+**/__pycache__/
+**/*.py[cod]
+**/*.pyo
+
+# IDE/editor settings
+.vscode/
+.idea/
+
+# Environment or secret config files
+*.env
+
+# Logs and local runtime files
+*.log
+
+# OS trash files
+.Trashes
