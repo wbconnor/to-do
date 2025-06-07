@@ -16,6 +16,15 @@ function useTodos() {
     }
   };
 
+  const addTodo = async (data) => {
+    try {
+      const res = await api.post("/todos", data);
+      setTodos((prev) => [...prev, res.data]);
+    } catch (err) {
+      console.error("Error creating todo", err);
+    }
+  };
+
   const deleteTodo = async (id) => {
     try {
       await api.delete(`/todos/${id}`);
@@ -63,7 +72,8 @@ function useTodos() {
     deleteTodo,
     editTodo,
     toggleTodoCompletion,
-    refetch: fetchTodos
+    refetch: fetchTodos,
+    addTodo
   };
 }
 
