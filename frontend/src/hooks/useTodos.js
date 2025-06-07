@@ -25,6 +25,19 @@ function useTodos() {
     }
   };
 
+  const editTodo = async (id, data) => {
+    try {
+      const res = await api.put(`/todos/${id}`, data);
+  
+      // Update the local state with the updated todo
+      setTodos((prev) =>
+        prev.map((t) => (t.id === id ? res.data : t))
+      );
+    } catch (err) {
+      console.error("Error updating todo", err);
+    }
+  };
+
   const toggleTodoCompletion = async (id) => {
     const todo = todos.find((t) => t.id === id);
     if (!todo) return;
@@ -48,6 +61,7 @@ function useTodos() {
     todos,
     loading,
     deleteTodo,
+    editTodo,
     toggleTodoCompletion,
     refetch: fetchTodos
   };
