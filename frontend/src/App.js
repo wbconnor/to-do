@@ -1,20 +1,17 @@
-import React, { useEffect, useState } from "react";
-import api from "./api";
+import React, { useState } from "react";
 import TodoList from "./components/TodoList";
 
 function App() {
-  const [todos, setTodos] = useState([]);
-
-  useEffect(() => {
-    api.get("/todos")
-      .then((res) => setTodos(res.data))
-      .catch((err) => console.error("Failed to fetch todos", err));
-  }, []);
+  const [editMode, setEditMode] = useState(false);
 
   return (
     <div style={{ padding: "1rem" }}>
-      <h1>📝 To-Do List</h1>
-      <TodoList todos={todos} />
+      <button onClick={() => setEditMode((prev) => !prev)}>
+        ✏️ {editMode ? "Exit Edit Mode" : "Edit Mode"}
+      </button>
+
+      <h1>📋 To-Do List</h1>
+      <TodoList editMode={editMode} />
     </div>
   );
 }
