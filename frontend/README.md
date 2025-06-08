@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# To-Do App Frontend (React + Tailwind)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the frontend for a full-stack To-Do application, built with **React**, styled with **Tailwind CSS**, and connected to a Flask-based REST API.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+- 📋 View a list of to-do items
+- ✅ Mark tasks as complete/incomplete
+- 🖊️ Edit tasks inline (with debounced auto-save)
+- ➕ Add new tasks from an inline form
+- 🔍 Filter by search text (real-time)
+- 🔽 Sort by:
+  - Date Created
+  - Completion status
+  - Alphabetical (A → Z)
+- 🧽 Delete tasks (in edit mode)
+- 🧑‍🎨 Responsive, polished UI using Tailwind
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📦 Tech Stack
 
-### `npm test`
+- [React](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Axios](https://axios-http.com/)
+- [Lodash.debounce](https://lodash.com/docs/4.17.15#debounce)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🛠️ Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Note: Start with the backend setup first for a streamline setup process
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1. Install dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+cd frontend
+npm install
+````
 
-### `npm run eject`
+### 2. Start the dev server
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+> This runs the app on [http://localhost:3000](http://localhost:3000)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+> Make sure the backend server is running on `http://localhost:5050` or change the `baseURL` in `src/api.js`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 🧪 API Expectations
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This frontend expects a backend with the following endpoints:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| Method | Endpoint     | Description      |
+| ------ | ------------ | ---------------- |
+| GET    | `/todos`     | Get all to-dos   |
+| POST   | `/todos`     | Create new to-do |
+| PUT    | `/todos/:id` | Update a to-do   |
+| DELETE | `/todos/:id` | Delete a to-do   |
 
-### Code Splitting
+To test with the provided Flask backend, see the [`backend/README.md`](../backend/README.md).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+### ⚠️ Note on Dependency Vulnerabilities
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This project may show a small number of vulnerabilities when running:
 
-### Making a Progressive Web App
+```bash
+npm audit
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+These come from indirect dependencies (primarily in the React + Tailwind toolchain). Attempting to auto-fix them using `npm audit fix --force` caused breaking changes to `react-scripts` and Tailwind integration.
 
-### Advanced Configuration
+For this reason, and to preserve a fully working and testable demo, known vulnerabilities were not force-fixed.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+✅ **If this project were going to production**, I would:
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Replace `react-scripts` with a custom Vite/Webpack setup
+* Lock and verify all dependencies with `npm audit`
+* Ensure CI and automated tests cover regressions
