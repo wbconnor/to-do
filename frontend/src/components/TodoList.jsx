@@ -46,15 +46,21 @@ return (
         setNewTitle("");
       }
     }}
-    style={{ marginBottom: "1rem" }}
+    className="flex items-center gap-2 mb-4"
     >
     <input
-    type="text"
-    placeholder="New todo title"
-    value={newTitle}
-    onChange={(e) => setNewTitle(e.target.value)}
+      type="text"
+      placeholder="New todo title"
+      value={newTitle}
+      onChange={(e) => setNewTitle(e.target.value)}
+      className="flex-grow border border-gray-300 rounded px-3 py-2"
     />
-    <button type="submit">➕ Add</button>
+    <button
+      type="submit"
+      className="bg-green-600 text-white px-3 py-2 rounded hover:bg-green-700"
+    >
+      ➕ Add
+    </button>
     </form>
   )}
   

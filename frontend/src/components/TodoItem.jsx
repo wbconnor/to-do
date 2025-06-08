@@ -26,11 +26,12 @@ function TodoItem({ todo, editTodo, deleteTodo, toggleTodoCompletion, editMode }
   };
 
   return (
-    <li>
+    <li className="flex items-center gap-2 py-2 border-b border-gray-100">
       <input
         type="checkbox"
         checked={todo.completed}
         onChange={() => toggleTodoCompletion(todo.id)}
+        className="h-4 w-4"
       />
 
       {editMode ? (
@@ -38,16 +39,23 @@ function TodoItem({ todo, editTodo, deleteTodo, toggleTodoCompletion, editMode }
           type="text"
           value={title}
           onChange={handleChange}
-          style={{ textDecoration: todo.completed ? "line-through" : "none" }}
+          className="flex-grow border border-gray-300 rounded px-2 py-1"
         />
       ) : (
-        <strong style={{ textDecoration: todo.completed ? "line-through" : "none" }}>
+        <span
+          className={`flex-grow ${todo.completed ? "line-through text-gray-400" : ""}`}
+        >
           {todo.title}
-        </strong>
+        </span>
       )}
 
       {editMode && (
-        <button onClick={() => deleteTodo(todo.id)}>🗑️</button>
+        <button
+          onClick={() => deleteTodo(todo.id)}
+          className="text-red-500 hover:text-red-700"
+        >
+          🗑️
+        </button>
       )}
     </li>
   );
