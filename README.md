@@ -26,8 +26,8 @@ The result is a solution I feel genuinely proud of — not just functional, but 
 
 ## 🧭 Start Here
 
-- Want to run the **API**? → Go to [`backend/README.md`](./backend/README.md)
-- Want to run the **UI**? → Go to [`frontend/README.md`](./frontend/README.md)
+- Want to run the **API**? → Go to [`backend/readme.md`](./backend/readme.md)
+- Want to run the **UI**? → Go to [`frontend/readme.md`](./frontend/readme.md)
 
 Each directory has clear setup instructions and details specific to that layer of the stack.
 
