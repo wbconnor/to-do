@@ -44,6 +44,15 @@ python app.py
 
 > The API will be available at: `http://localhost:5000`
 
+**💡 Note**
+Run these when you need to restart the server:
+
+```sh
+source venv/bin/activate
+pip install -r requirements.txt
+python app.py
+```
+
 ---
 
 ## 📬 API Endpoints
